@@ -126,16 +126,39 @@ var player2Score = player2Height + (player2Age * 5);
 console.log(player2 + '\'s' + ' score is their height in cms ' + player2Height + 'cms + their age ' + player2Age
 + ' times 5, which results in their score being ' + player2Score);
 
+//Player 3 Total Score Calculated from Prompts
+var player3 = prompt('What is your name Player 3');
+var height3Feet = Number(prompt('How tall are you in feet? Example 5 . Next prompt will be inches'));
+height3Feet = height3Feet * 30.4;
+//console.log(height1Feet);
+var height3Inches = Number(prompt('How tall are you in inches? Example 7.'));
+height3Inches = Math.floor(height3Inches * 2.6);
+var player3Height = Math.floor(height3Feet + height3Inches);
+console.log(player3 + '\'s' + ' height is ' + player3Height + 'cms');
 
-if (player1Score > player2Score) {
+var player3Age = Number(prompt('How old are you ' + player3));
+//console.log(player2Age * 5);
+var player3Score = player3Height + (player3Age * 5);
+console.log(player3 + '\'s' + ' score is their height in cms ' + player3Height + 'cms + their age ' + player3Age
++ ' times 5, which results in their score being ' + player3Score);
+
+
+if (player1Score > player2Score && player1Score > player3Score) {
 	console.log(player1 + ' with a score of ' + player1Score + ' is the winner! ' +
-		player2 + ' with a score of ' + player2Score + ' was the loser in this round.');
-} else if (player2Score > player1Score) {
-	console.log(player2 + ' with a score of ' + player2Score + ' was the winner! ' + 
-		player1 + ' with a score of ' + player1Score + ' was the loser in this round.');
+		player2 + ' and ' + player3 + ' lost with scores of ' + '\n' + player2 + ' : ' + player2Score + 
+		'\n' + player3 + ' : ' + player3Score);
+} else if (player2Score > player1Score && player2Score > player3Score) {
+	console.log(player2 + ' with a score of ' + player2Score + ' is the winner! ' +
+		player1 + ' and ' + player3 + ' lost with scores of ' + '\n' + player1 + ' : ' + player1Score + 
+		'\n' + player3 + ' : ' + player3Score);
+} else if (player3Score > player2Score && player3Score > player1Score) {
+	console.log(player3 + ' with a score of ' + player3Score + ' is the winner! ' +
+		player1 + ' and ' + player2 + ' lost with scores of ' + '\n' + player1 + ' : ' + player1Score + 
+		'\n' + player2 + ' : ' + player2Score);
 } else {
-	console.log(player1 + ' and ' + player2 + ' tied with both having their scores equal ' +
-		player1 + ' : ' + player1Score + ' and ' + player2 + ' : ' + player2Score);
+	console.log(player1 + ', ' + player2 + ' and ' + player3 + ' tied. Each score is listed below.'
+		+ '\n' + player1 + ' : ' + player1Score + '\n' + player2 + ' : ' + player2Score + '\n'
+		+ player3 + ' : ' + player3Score);
 }
 
 
