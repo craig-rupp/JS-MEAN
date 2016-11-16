@@ -127,6 +127,17 @@ console.log(player2 + '\'s' + ' score is their height in cms ' + player2Height +
 + ' times 5, which results in their score being ' + player2Score);
 
 
+if (player1Score > player2Score) {
+	console.log(player1 + ' with a score of ' + player1Score + ' is the winner! ' +
+		player2 + ' with a score of ' + player2Score + ' was the loser in this round.');
+} else if (player2Score > player1Score) {
+	console.log(player2 + ' with a score of ' + player2Score + ' was the winner! ' + 
+		player1 + ' with a score of ' + player1Score + ' was the loser in this round.');
+} else {
+	console.log(player1 + ' and ' + player2 + ' tied with both having their scores equal ' +
+		player1 + ' : ' + player1Score + ' and ' + player2 + ' : ' + player2Score);
+}
+
 
 
 
