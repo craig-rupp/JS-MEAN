@@ -30,37 +30,65 @@
 // console.log(ageTim);
 // console.log( 26 * 3);
 
-var name = 'Craig';
-var age = 26;
-var isMarried = 'yes';
+// Coersion and If/Else Review
+// var name = 'Craig';
+// var age = 26;
+// var isMarried = 'yes';
 
-if(isMarried === 'yes'){
-	console.log(name + ' is married at the young age of' + age);
+// if(isMarried === 'yes'){
+// 	console.log(name + ' is married at the young age of' + age);
+// } else {
+// 	console.log(name + ' has made a wise decision to not be handcuffed at ' + age + ' years old');
+// }
+
+// isMarried = false;
+// if(isMarried){
+// 	console.log(name + " decided to get married");
+// } else {
+// 	console.log( name + " is not married");
+// }
+
+// if (23 == '23'){
+// 	console.log("Type Coersion worked");
+// } else {
+// 	console.log("it did not");
+// }
+
+// if (23 === '23'){
+// 	console.log("Type Coersion worked");
+// } {
+// 	console.log("it did not");
+// }
+
+// Logic / Switch Statements
+
+var age = 20;
+
+if(age < 20){
+	console.log("John is not in his twenties or older");
+} else if (age >= 20 && age < 30) {
+	console.log("John is twenty or in his twenties");
 } else {
-	console.log(name + ' has made a wise decision to not be handcuffed at ' + age + ' years old');
+	console.log("John is 30 or older");
 }
 
-isMarried = false;
-if(isMarried){
-	console.log(name + " decided to get married");
-} else {
-	console.log( name + " is not married");
+var job = 'developer';
+name = prompt('What is your name');
+job = prompt('What is your occupation');
+
+switch (job){
+	case 'developer':
+		console.log( name + ' is hoping to be a ' + job);
+		break;
+	case 'actor':
+		console.log(name + ' Timothy is an actor');
+		break;
+	case 'politician':
+		console.log('Good Luck ' + name);
+		break;
+	default:
+		console.log(name + '\'s job was not a switch case');
 }
-
-if (23 == '23'){
-	console.log("Type Coersion worked");
-} else {
-	console.log("it did not");
-}
-
-if (23 === '23'){
-	console.log("Type Coersion worked");
-} {
-	console.log("it did not");
-}
-
-
-
 
 
 
