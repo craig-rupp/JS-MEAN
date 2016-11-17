@@ -60,26 +60,45 @@ var object = {
 	job : 'developer',
 	married : false,
 	family : ['Steve', 'Lisa', 'Collen', 'Rachel', 'Molly'],
-	calculateAge : function(birthYear){
-		return 2016 - birthYear
+	calculateAge : function(){
+		return 2016 - this.birthYear;
 	}
 };
 
-console.log(object['family'][1]);
-console.log(object.calculateAge(object['birthYear']));
-console.log(object.calculateAge(1987));
+// console.log(object['family'][1]);
+// console.log(object.calculateAge(object['birthYear']));
+// console.log(object.calculateAge(1987));
 
-object['birthYear'] = 1776;
-console.log(object);
+//Console log calculateAge property/method without parameter
+// console.log(object['calculateAge']());
+// var age = object.calculateAge();
+// object['age'] = age;
+// console.log(object);
+// console.log(object['family'][4]);
 
-var jane = new Object();
-jane.name = 'Jane';
-jane.last = 'Hooligan';
-jane['birthYear'] = 1875;
-jane['dinosaur'] = 'Stegosaur';
-jane['married'] = true;
+var secondPerson = {
+	name : 'Molly',
+	last : 'Rupp',
+	birthYear : 1991,
+	job : 'geoDude',
+	married : false,
+	family : ['Steve', 'Lisa', 'Collen', 'Rachel', 'Molly'],
+	calculateAge : function(){
+		return this.age = 2016 - this.birthYear;
+	}
+};
+console.log(secondPerson.calculateAge());
+console.log(secondPerson['age']);
+console.log(secondPerson);
 
-console.log(jane);
+// var jane = new Object();
+// jane.name = 'Jane';
+// jane.last = 'Hooligan';
+// jane['birthYear'] = 1875;
+// jane['dinosaur'] = 'Stegosaur';
+// jane['married'] = true;
+
+// console.log(jane);
 
 
 
