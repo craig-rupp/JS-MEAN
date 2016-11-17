@@ -86,10 +86,24 @@ function determineAgeBorn(yearsBorn){
 	console.log(oldEnough);	
 }
 
-//determineAgeBorn(yearsBornArray);
+determineAgeBorn(yearsBornArray);
 determineAgeBorn(secondTest);
 determineAgeBorn(yearsBornArray);
 determineAgeBorn(thirdTest);
+
+
+var userYears = [];
+
+do {
+	var ask = confirm("Would you like to add another year?");
+	if(ask){
+		var years = prompt('Please enter a year : ');
+		userYears.push(years);	
+	}
+	console.log(userYears);
+} while (ask == true);
+
+determineAgeBorn(userYears);
 //console.log(totalAge);
 
 
