@@ -53,16 +53,44 @@ while(i < yearsBornArray.length){
 	i++;
 }
 //console.log(emptyArray[2], emptyArray);
+var secondTest = [1776, 2005, 2001, 1945];
+var thirdTest = [1994, 2006, 1568, 1973, 1999];
 var totalAge = [];
+var oldEnough = [];
 function determineAgeBorn(yearsBorn){
-	for(var i = 0; i < yearsBornArray.length; i++){
-		console.log(yearsBornArray[i]);
-		totalAge.push((2016 - yearsBornArray[i]));
-	}	
+	if(totalAge.length > 0){
+		do{
+			totalAge.pop();
+		} while (totalAge.length > 0);
+	}
+
+	for(var i = 0; i < yearsBorn.length; i++){
+		totalAge.push((2016 - yearsBorn[i]));
+	}
+	console.log(totalAge);
+
+	if(oldEnough.length > 0){
+		do {
+			oldEnough.pop();
+		} while (oldEnough.length > 0);
+	}
+
+	for(var i = 0; i < totalAge.length; i++){
+		if(totalAge[i] > 18){
+			oldEnough.push(true);
+		} else {
+			oldEnough.push(false);
+		}
+	}
+
+	console.log(oldEnough);	
 }
 
+//determineAgeBorn(yearsBornArray);
+determineAgeBorn(secondTest);
 determineAgeBorn(yearsBornArray);
-console.log(totalAge);
+determineAgeBorn(thirdTest);
+//console.log(totalAge);
 
 
 
