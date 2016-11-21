@@ -14,7 +14,7 @@ var scores, roundScore, activePlayer;
 
 scores = [0, 0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 //hide dice image on page load with css style property display
 document.querySelector('.dice').style.display = 'none';
@@ -38,6 +38,27 @@ document.querySelector('.btn-roll').addEventListener('click', function btn(){
 	diceDom.src = 'dice-' + dice + '.png';
 
 	// 3. Update the Round Score If the rolled number was not a 1
+	if (dice !== 1){
+		//add score
+		roundScore += dice
+		document.querySelector('#current-' + activePlayer).textContent = roundScore;
+	} else {
+		//Next Player
+		//Ternary if active player equals 0/active player is now 1, else active player = 0
+		activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+		roundScore = 0;
+		document.getElementById('current-0').textContent = roundScore;
+		document.getElementById('current-1').textContent = roundScore;
+
+		document.querySelector('.player-0-panel').classList.toggle('active');
+		document.querySelector('.player-1-panel').classList.toggle('active');
+
+		//document.querySelector('.player-0-panel').classList.remove('active');
+		//document.querySelector('.player-1-panel').classList.add('active');
+
+		document.querySelector('.dice').style.display = 'none';
+
+	}
 });
 
 
