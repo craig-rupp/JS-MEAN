@@ -43,7 +43,37 @@ document.querySelector('.btn-roll').addEventListener('click', function btn(){
 		roundScore += dice
 		document.querySelector('#current-' + activePlayer).textContent = roundScore;
 	} else {
-		//Next Player
+		nextPlayer();
+	}
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function(){
+	//alert('Hold button pressed');
+
+	//add current score to GLOBAL SCORE
+	scores[activePlayer] += roundScore;
+	console.log(scores);
+	//Update the UI
+	document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+	//check if player won the game
+	if(scores[activePlayer] >= 20) {
+		//document.getElementById('name-' + activePlayer).innerHTML = '<em>Winner</em>';
+		document.getElementById('name-' + activePlayer).textContent = 'Winner!';
+		document.querySelector('.dice').style.display = 'none';
+		document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+		document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+	} else {
+		//Change player
+		nextPlayer();	
+	}
+
+
+
+});
+
+function nextPlayer (){
+	//Next Player
 		//Ternary if active player equals 0/active player is now 1, else active player = 0
 		activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
 		roundScore = 0;
@@ -57,10 +87,7 @@ document.querySelector('.btn-roll').addEventListener('click', function btn(){
 		//document.querySelector('.player-1-panel').classList.add('active');
 
 		document.querySelector('.dice').style.display = 'none';
-
-	}
-});
-
+}
 
 
 
