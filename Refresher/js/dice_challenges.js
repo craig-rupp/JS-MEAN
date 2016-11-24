@@ -31,7 +31,7 @@ document.querySelector('.btn-roll').addEventListener('click', function btn(){
 		//
 		if(checkDice === 6 && dice === 6){
 			scores[activePlayer] = 0;
-			document.querySelector('#current-' + activePlayer).textContent = '0';
+			document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 			nextPlayer();
 		}
 		// 3. Update the Round Score If the rolled number was not a 1
@@ -53,8 +53,17 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 		//console.log(scores);
 		//Update the UI
 		document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-		//check if player won the game
-		if(scores[activePlayer] >= 150) {
+		//check if player won the game and if user placed input to check score
+		
+		var scoreInput = parseInt(document.querySelector('.btn-amount').value);
+		var winningScore;
+		console.log(scoreInput);
+		if(scoreInput){
+			winningScore = scoreInput;
+		} else {
+			winningScore = 100;
+		}
+		if(scores[activePlayer] >= winningScore) {
 			//document.getElementById('name-' + activePlayer).innerHTML = '<em>Winner</em>';
 			document.getElementById('name-' + activePlayer).textContent = 'Winner!';
 			document.querySelector('.dice').style.display = 'none';
