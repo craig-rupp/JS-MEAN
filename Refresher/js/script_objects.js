@@ -3,7 +3,7 @@
 console.log('Let\'s work on objects!');
 
 //Function Constructor
-/*
+
 var John = {
 	name : 'John',
 	yearOfBirth : 1990,
@@ -31,7 +31,7 @@ var Lisa = new Person('Lisa', 1963, 'CCN');
 
 Lisa.calculateAge();
 console.log(Lisa.lastName);
-*/
+
 //Object.create
 
 var personProto = {
@@ -51,6 +51,53 @@ var Lisa = Object.create(personProto, {
 	yearOfBirth : {value : 1963},
 	job : {value : 'CCN'}
 });
+
+//Function as Arguments
+var years = [1990, 1961, 1963, 1987, 1991, 1988, 1999];
+
+function arrayCalc(arr, fn){
+	var resArr = [];
+	for (var i = 0; i < arr.length; i++){
+		resArr.push(fn(arr[i]));
+		//console.log(fn(arr[i]));
+	}
+	return resArr;
+}
+
+function calcAge(el){
+	return 2016 - el;
+}
+
+function isFullAge(el) {
+	if(el >= 18){
+		return "Yeah boi you're over 18!!";
+	}
+		return "Hope you're enjoying no responsibilities!";
+}
+
+function maxHeartRate(el){
+	if(el >= 18 && el <= 81){
+		return Math.round(206.9 - (0.67 - el));
+	} else {
+		return - 1;
+	}
+}
+
+var ages = arrayCalc(years, calcAge);
+//var fullAges = arrayCalc(ages, isFullAge);
+var rates = arrayCalc(ages, maxHeartRate);
+
+console.log(ages);
+//console.log(fullAges);
+console.log(rates)
+
+
+
+
+
+
+
+
 
 
 
