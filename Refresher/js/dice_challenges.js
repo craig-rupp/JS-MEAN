@@ -13,7 +13,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, checkDice;
+var scores, roundScore, activePlayer, gamePlaying, checkDice, secondCheckDice;
 init();
 
 //listerner for dice roll
@@ -21,27 +21,35 @@ document.querySelector('.btn-roll').addEventListener('click', function btn(){
 	if (gamePlaying) {
 		// 1. Random Number
 		var dice = Math.floor(Math.random() * 6) + 1;
+		var secondDice = Math.floor(Math.random() * 6) + 1;
 		console.log(dice);
+		console.log(secondDice);
 		// 2. Display Result
 		var diceDom = document.querySelector('.dice');
 		diceDom.style.display = 'block';
 		diceDom.src = 'dice-' + dice + '.png';
+		var diceDom2 = document.querySelector('.dice2');
+		diceDom2.style.display = 'block';
+		diceDom2.src = 'dice-' + secondDice + '.png';
 		//
-		if(checkDice === 6 && dice === 6){
+		if(checkDice === 6 && dice === 6 || secondCheckDice === 6 && secondDice === 6){
 			scores[activePlayer] = 0;
+			alert("You have rolled consecutive sixes with two turns, your total score is now 0");
 			document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 			nextPlayer();
 		}
 		// 3. Update the Round Score If the rolled number was not a 1
-		else if (dice !== 1){
+		else if (dice !== 1 && secondDice !== 1){
 			//add score
-			roundScore += dice;
+			roundScore += dice + secondDice;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 		} else {
+			alert("One of your two dice rolled was a 1, next player's turn");
 			nextPlayer();
 		}
 		checkDice = dice;
-		console.log('Dice value to evaluate next dice amount :' + checkDice);	
+		secondCheckDice = secondDice;
+		//console.log('Dice value to evaluate next dice amount :' + checkDice);	
 	};
 });
 
@@ -65,6 +73,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 			//document.getElementById('name-' + activePlayer).innerHTML = '<em>Winner</em>';
 			document.getElementById('name-' + activePlayer).textContent = 'Winner!';
 			document.querySelector('.dice').style.display = 'none';
+			document.querySelector('.dice2').style.display = 'none';
 			document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
 			document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
 			gamePlaying = false;
@@ -89,6 +98,7 @@ function nextPlayer (){
 		//document.querySelector('.player-1-panel').classList.add('active');
 
 		document.querySelector('.dice').style.display = 'none';
+		document.querySelector('.dice2').style.display = 'none';
 }
 
 document.querySelector('.btn-new').addEventListener('click', init);
@@ -101,6 +111,7 @@ function init(){
 	gamePlaying = true;
 
 	document.querySelector('.dice').style.display = 'none';
+	document.querySelector('.dice2').style.display = 'none';
 
 	document.getElementById('score-0').textContent = '0';
 	document.getElementById('score-1').textContent = '0';
