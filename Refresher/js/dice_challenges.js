@@ -34,7 +34,7 @@ document.querySelector('.btn-roll').addEventListener('click', function btn(){
 		//
 		if(checkDice === 6 && dice === 6 || secondCheckDice === 6 && secondDice === 6){
 			scores[activePlayer] = 0;
-			alert("You have rolled consecutive sixes with two turns, your total score is now 0");
+			alert("One of the two dices was a 6 consecutively, your total score is now 0");
 			document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 			nextPlayer();
 		}
@@ -63,7 +63,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 		
 		var scoreInput = parseInt(document.querySelector('.btn-amount').value);
 		var winningScore;
-		console.log(scoreInput);
+		//console.log(scoreInput);
 		if(scoreInput){
 			winningScore = scoreInput;
 		} else {
