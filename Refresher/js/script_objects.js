@@ -53,7 +53,7 @@ var Lisa = Object.create(personProto, {
 });
 
 //Function as Arguments
-var years = [1990, 1961, 1963, 1987, 1991, 1988, 1999];
+var years = [1990, 1961, 1963, 1987, 1991, 1988, 1999, 2005];
 
 function arrayCalc(arr, fn){
 	var resArr = [];
@@ -68,13 +68,9 @@ function calcAge(el){
 	return 2016 - el;
 }
 
-function isFullAge(el) {
-	if(el >= 18){
-		return "Yeah boi you're over 18!!";
-	}
-		return "Hope you're enjoying no responsibilities!";
+function isFullAge(limit, el) {
+	return el >= limit;
 }
-
 function maxHeartRate(el){
 	if(el >= 18 && el <= 81){
 		return Math.round(206.9 - (0.67 - el));
@@ -86,8 +82,10 @@ function maxHeartRate(el){
 var ages = arrayCalc(years, calcAge);
 //var fullAges = arrayCalc(ages, isFullAge);
 var rates = arrayCalc(ages, maxHeartRate);
-
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 console.log(ages);
+console.log(fullJapan);
+
 //console.log(fullAges);
 console.log(rates)
 
