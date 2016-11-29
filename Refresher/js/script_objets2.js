@@ -74,6 +74,54 @@ intQuestion('designer')('Craig');
 var Actor = intQuestion('Actor');
 Actor('Tayo');
 
+//Bind, Call, Apply
+
+
+var Craig = {
+	name : 'Craig',
+	age : '26',
+	job : 'developer',
+	presentation : function (style, timeOfDay){
+		if (style === 'formal'){
+			console.log("Good " + timeOfDay + ', ' + 'ladies and gentlemen. ' + 'I\'m ' + this.name + ", "
+				+ 'I\'m a' + " " + this.job + ' and I\'m' + " " + this.age + " years old.");
+		} else if (style === 'friendly'){
+			console.log("Hey, what\'s up, my name is " + this.name + ". " + 'I\'m a ' + this.job
+				+ ' and I\'ve been thugging since I was ' + this.age + ' years old.');
+		}
+	}
+};
+Craig.presentation('formal', 'morning');
+Craig.presentation('friendly', 'pre-game');
+
+var emile = {
+	name : 'Emile',
+	age : '87',
+	job : 'botanist'
+};
+//call first argument is the 'this variable' ability to call properties of other objects and use function of other object
+//method borrowing
+Craig.presentation.call(emile, 'friendly', 'trap-time');
+Craig.presentation.call(emile, 'formal', 'trap-time');
+
+var emileFormal = Craig.presentation.bind(emile, 'formal');
+emileFormal('afternoon-tea');
+emileFormal('swangin-time');
+
+var craigFriend = Craig.presentation.bind(Craig, 'friendly');
+craigFriend('pre-gamin');
+
+var craigFormal = Craig.presentation.bind(Craig, 'formal');
+craigFormal('album previewing time');
+
+
+
+
+
+
+
+
+
 
 
 
