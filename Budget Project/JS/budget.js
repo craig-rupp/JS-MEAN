@@ -2,19 +2,8 @@
 //console.log('Ya boi');
 
 var budgetController = (function(){
-	//console.log('Hello');
-	//private variable
-	var x = 23;
-	//private function
-	var add = function(a){
-		return x + a;
-	}
-	//closure with access to variable/function above 
-	return {
-		publicTest: function(b){
-			return add(b);
-		}
-	}
+	
+
 })();
 
 var UIController = (function(){
@@ -26,12 +15,27 @@ var UIController = (function(){
 
 var appController = (function(budgetCtrl, UiCtrl){
 
-	var z = budgetCtrl.publicTest(15);
+	var controlAddItem = function(){
+		
+		//1. Get filed input data
 
-	return {
-		otroPublicMethod : function(){
-			console.log(z);
-		}
+		//2. Add item to the budget controller
+
+		//3. Add item to the UI
+
+		//4. Calculate the budget
+
+		//5. Display the budget
+
+		console.log('functino worked');
 	}
+
+	document.querySelector('.add__btn').addEventListener('click', controlAddItem);
+
+	document.addEventListener('keypress', function(event){
+		if(event.keyCode === 13 || event.which === 13){
+			controlAddItem();
+		}
+	});
 
 })(budgetController, UIController);
