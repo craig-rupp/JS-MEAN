@@ -2,7 +2,32 @@
 //console.log('Ya boi');
 
 var budgetController = (function(){
-	
+
+	var Expense = function(id, description, value){
+		this.id = id;
+		this.description = description;
+		this.value = value;
+	};
+
+	var Income = function(id, description, value){
+		this.id = id;
+		this.description = description;
+		this.value = value;
+	};
+
+	var allExpenses = [];
+	var allIncomes = [];
+
+	var data = {
+		allItems : {
+			expenses : [],
+			income : []
+		},
+		total : {
+			exp : 0,
+			inc : 0
+		}
+	};
 
 })();
 
@@ -51,7 +76,7 @@ var appController = (function(budgetCtrl, UiCtrl){
 
 		//1. Get filed input data
 			var input = UiCtrl.getInput();
-			console.log(input);
+			//console.log(input);
 
 		//2. Add item to the budget controller
 
