@@ -33,7 +33,19 @@ var UIController = (function(){
 
 var appController = (function(budgetCtrl, UiCtrl){
 
-	var DOM = UiCtrl.getDomStrings();
+	var setupEventListener = function (){
+
+		var DOM = UiCtrl.getDomStrings();
+
+		document.querySelector(DOM.inputBtn).addEventListener('click', controlAddItem);
+
+		document.addEventListener('keypress', function(event){
+			if(event.keyCode === 13 || event.which === 13){
+				controlAddItem();
+			}
+		});
+	};
+
 
 	var controlAddItem = function(){
 
@@ -48,15 +60,16 @@ var appController = (function(budgetCtrl, UiCtrl){
 		//4. Calculate the budget
 
 		//5. Display the budget
-	}
+	};
 
-	document.querySelector(DOM.inputBtn).addEventListener('click', controlAddItem);
-
-	document.addEventListener('keypress', function(event){
-		if(event.keyCode === 13 || event.which === 13){
-			controlAddItem();
+	return {
+		init : function(){
+			console.log('Application has started.');
+			setupEventListener();
 		}
-	});
-
+	};
 
 })(budgetController, UIController);
+
+appController.init();
+
