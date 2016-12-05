@@ -1,6 +1,6 @@
 'use strict';
 //console.log('Ya boi');
-
+//budget Controller
 var budgetController = (function(){
 
 	var Expense = function(id, description, value){
@@ -96,7 +96,12 @@ var UIController = (function(){
 		inputVal : '.add__value',
 		inputBtn : '.add__btn',
 		incomeContainer : '.income__list',
-		expensesContainer : '.expenses__list'
+		expensesContainer : '.expenses__list',
+		budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage',
+        container : '.container'
 	};
 
 	return {
@@ -146,6 +151,18 @@ var UIController = (function(){
 			});
 			//return focus to first 'description, input value'
 			fieldsArray[0].focus();
+		},
+
+		displayBudget : function(obj){
+			document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
+			document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
+			document.querySelector(DOMStrings.expensesLabel).textContent = obj.totalExp;
+
+			if(obj.percentage > 0){
+				document.querySelector(DOMStrings['percentageLabel']).textContent = obj.percentage + '%';				
+			} else {
+				document.querySelector(DOMStrings['percentageLabel']).textContent = '---';
+			}
 		}
 	};
 
@@ -165,6 +182,7 @@ var appController = (function(budgetCtrl, UiCtrl){
 				controlAddItem();
 			}
 		});
+		document.querySelector(DOM.container).addEventListener('click', controlDelItem);
 	};
 
 	var updateBudget = function(){
@@ -176,7 +194,7 @@ var appController = (function(budgetCtrl, UiCtrl){
 		var budget = budgetCtrl.getBudget();
 
 		//3. Display budget on the UI
-		console.log(budget);
+		UiCtrl.displayBudget(budget);
 	}
 
 	var controlAddItem = function(){
@@ -199,13 +217,28 @@ var appController = (function(budgetCtrl, UiCtrl){
 				updateBudget();	
 			}
 
-
 		//6. Display the budget
+			//UiCtrl.displayBudget(input);
 	};
+
+	var controlDelItem = function(event){
+		var item_id = event.target.parentNode.parentNode.parentNode.parentNode.id;
+		if(item_id){
+			//inc-1
+			var splitID = item_id.split('-');
+			console.log(splitID);
+		}
+	}
 
 	return {
 		init : function(){
 			console.log('Application has started.');
+			UiCtrl.displayBudget({
+				budget : 0,
+				totalInc : 0,
+				totalExp : 0,
+				percentage : -1
+			});
 			setupEventListener();
 		}
 	};
