@@ -58,6 +58,18 @@ var budgetController = (function(){
 			data.allItems[type].push(newItem);
 			return newItem;
 		},
+		deleteItem : function(type, id){
+			//map returns new array 
+			var IDs = data.allItems[type].map(function(current){
+				return current.id;
+			});
+			var index = IDs.indexOf(id);
+
+			if(index !== -1){
+				//where we want to start deleting, how many we want to delete (two args for splice)
+				data.allItems[type].splice(index, 1);
+			}
+		},
 		testing : function() {
 			console.log(data);
 		},
@@ -226,7 +238,16 @@ var appController = (function(budgetCtrl, UiCtrl){
 		if(item_id){
 			//inc-1
 			var splitID = item_id.split('-');
-			console.log(splitID);
+			var type = splitID[0];
+			var ID = parseInt(splitID[1]);
+			//console.log(splitID);
+			//1. delete item from data structure
+			budgetCtrl.deleteItem(type, ID);
+
+			//2. delete item from UI
+
+
+			//3. update and show new budget
 		}
 	}
 
