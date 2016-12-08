@@ -142,6 +142,26 @@ var UIController = (function(){
         container : '.container',
         expensesPercLabel : '.item__percentage'
 	};
+	var formatNumber = function(numb, type){
+			var numbSplit, integer, dec, type;
+			numb = Math.abs(numb);
+			numb = numb.toFixed(2);
+
+			numbSplit = numb.split('.');
+
+			integer = numbSplit[0];
+			dec = numbSplit[1];
+
+			if(integer.length > 3){
+				integer = integer.substr(0, integer.length - 3) + ',' + integer.substr(integer.length - 3, 3);  
+				//input 2310, should read 2,310 or for bigger numbers
+			}
+
+			//type === 'exp' ? sign = '-' : sign = '+';
+			//console.log(numbSplit, integer, dec);
+
+			return (type === 'inc' ? '+' : '-') + ' ' + integer + '.' + dec;
+		};
 
 	return {
 		getInput : function(){
@@ -171,7 +191,7 @@ var UIController = (function(){
 			//replace placeholder text with data
 			newHTML = html.replace('%id%', object.id);
 			newHTML = newHTML.replace('%description%', object.description);
-			newHTML = newHTML.replace('%value%', object.value);
+			newHTML = newHTML.replace('%value%', formatNumber(object.value, type));
 			//Insert HTML into the DOM
 			document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
 
@@ -197,9 +217,12 @@ var UIController = (function(){
 		},
 
 		displayBudget : function(obj){
-			document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
-			document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
-			document.querySelector(DOMStrings.expensesLabel).textContent = obj.totalExp;
+			var type;
+			obj.budget > 0 ? type = 'inc' : type = 'exp';
+
+			document.querySelector(DOMStrings.budgetLabel).textContent = formatNumber(obj.budget, type);
+			document.querySelector(DOMStrings.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc');
+			document.querySelector(DOMStrings.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
 
 			if(obj.percentage > 0){
 				document.querySelector(DOMStrings['percentageLabel']).textContent = obj.percentage + '%';				
@@ -210,7 +233,7 @@ var UIController = (function(){
 		displayPercentages : function(percentages){
 			//could be more than one 'All'
 			var fields = document.querySelectorAll(DOMStrings.expensesPercLabel);
-
+			//returns list
 			var nodeListForEach = function(list, callback){
 				for(var i = 0; i < list.length; i++){
 					callback(list[i], i);
@@ -225,7 +248,6 @@ var UIController = (function(){
 				}
 			});
 		}
-
 	};
 
 })();
