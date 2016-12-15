@@ -63,19 +63,40 @@ console.log("Hello there");
  
 //Blocks & IIFEs ES6
 
-{
-	const a = 1;
-	let b = 2;
-	var c = 4;
-}
-console.log(c);
-console.log(a + b);
+// {
+// 	const a = 1;
+// 	let b = 2;
+// 	var c = 4;
+// }
+// console.log(c);
+// console.log(a + b);
 
-//ES 5 IIFE
-(function(){
-	var c = 3;
-})();
-console.log(c);
+// //ES 5 IIFE
+// (function(){
+// 	var c = 3;
+// })();
+// console.log(c);
+
+//Strings ES6
+
+let firstName = 'Craig';
+let lastName = 'Rupp';
+const yearOfBirth = 1990;
+function calculateAge(year){
+	return 2016 - year;
+}
+
+console.log(`This is ${firstName} ${lastName}. He was born on February 8th in ${yearOfBirth} 
+and is ${calculateAge(yearOfBirth)} years old.`);
+
+const n = `${firstName} ${lastName}`;
+console.log(n.startsWith('C'));
+console.log(n.endsWith('p'));
+console.log(n.includes('e'));
+console.log(`${firstName} `.repeat(3));
+
+
+
 
 
 
