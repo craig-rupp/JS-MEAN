@@ -95,7 +95,28 @@ console.log(n.endsWith('p'));
 console.log(n.includes('e'));
 console.log(`${firstName} `.repeat(3));
 
+//Arrow Functions 
+const years = [1982, 1990, 1937, 1912];
 
+//ES5
+var years5 = years.map(function(el){
+	return 2016 - el + ', years old ';
+});
+console.log(years5);
+
+//ES6
+let ages6 = years.map(el => 2016 - el + `, years old.` );
+console.log(ages6);
+
+ages6 = years.map((el, index) => `Age element ${index + 1} : This person is ${2016 - el} years old.`);
+console.log(ages6);
+
+ages6 = years.map((el, index) => {
+	const now = new Date().getFullYear();
+	const age = now - el;
+	return `Age element ${index + 1} : This person is ${age} years old. more than one line/action`;
+});
+console.log(ages6);
 
 
 
