@@ -31,3 +31,37 @@ const box6 = {
 	}
 }
 box6.clickMe();
+
+function Person(name){
+	this.name = name;
+}
+//ES 5
+Person.prototype.myFriends5 = function (friends){
+	var arr = friends.map(function(el){
+		return this.name + ' is friends with ' + el;
+	}.bind(this));
+	console.log(arr);
+}
+
+//bind allows acces to the this variable which is constructed in the Person function constructor
+var array = ['Tayo', 'Megan', 'Elana'];
+
+new Person('Craig').myFriends5(array);
+
+//ES 6
+Person.prototype.myFriends6 = function (friends){
+	let arr = friends.map(el => `${this.name} is friends with ${el}`);
+		console.log(arr);
+}
+new Person('Steven')['myFriends6'](array);
+
+
+
+
+
+
+
+
+
+
+
