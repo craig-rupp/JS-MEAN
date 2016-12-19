@@ -56,6 +56,64 @@ Person.prototype.myFriends6 = function (friends){
 new Person('Steven')['myFriends6'](array);
 
 
+//Destructuring 
+//ES 5
+// var john = ['John', 26];
+// var name = john[0];
+// var age = john[1];
+// console.log(name, age);
+
+//ES 6 
+const[name, age] = ['John', 26];
+console.log(name, age);
+
+const obj = {
+	firstName : 'John',
+	lastName : 'Murphy'
+};
+const {firstName, lastName} = obj;
+console.log(firstName, lastName);
+
+const {firstName : a, lastName : b} = obj;
+console.log(a);
+console.log(b);
+
+
+
+function calcAgeRetirement (year) {
+	const age = new Date().getFullYear() - year;
+	return [age, 65 - age];
+}
+
+const [age2, retirement] = 
+calcAgeRetirement(1990);
+console.log(age2);
+console.log(retirement);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
