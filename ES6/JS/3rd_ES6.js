@@ -60,6 +60,67 @@ var Luke = new SmithPerson2('Luke', 2098);
 console.log(Han);
 console.log(Luke);
 
+//ES6 Maps key value data structure
+
+const question = new Map();
+//set with key first then value pair
+question.set('question', 'What is the name of Jen Erso\'s father?');
+question.set(1, 'Grady');
+question.set(2, 'Henry');
+question.set(3, 'Galen');
+question.set(4, 'Barclay');
+question.set('correct', 3);
+question.set(true, `Correct Answer, ${question.get(3)} was her father`);
+question.set(false, 'Sorry incorrect, please try again');
+
+console.log(question.get('question'));
+//console.log(question.size);
+if(question.has(4)){
+	//question.delete(4);
+	//console.log(question.get(4));
+}
+
+//question.clear();
+//loop makes more sense to me then for on line 88
+//question.forEach((element, index) => 
+// 	console.log(`This is ${index} or (key) , and it's ${element} or it's (value)`));
+
+for(let [key, value] of question.entries()){
+	if(typeof(key) === 'number'){
+		console.log(`Answer ${key} : ${value}`);
+	}
+}
+
+const ans = parseInt(prompt('Write the correct answer'));
+console.log(question.get(ans === question.get('correct')));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
