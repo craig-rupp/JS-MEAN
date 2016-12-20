@@ -91,14 +91,48 @@ for(let [key, value] of question.entries()){
 	}
 }
 
-const ans = parseInt(prompt('Write the correct answer'));
-console.log(question.get(ans === question.get('correct')));
+//const ans = parseInt(prompt('Write the correct answer'));
+//console.log(question.get(ans === question.get('correct')));
 
+//CLASSES
+//ES 5
 
+var Person5 = function(name5, yearofbirth5, job5)
+{
+	this.name5 = name5;
+	this.yearofbirth5 = yearofbirth5;
+	this.job5 = job5;
+}
+Person5.prototype.calculateAge = function ()
+{
+	var person5age = new Date().getFullYear() - this.yearofbirth5;
+	console.log(person5age);
+}
+var John5 = new Person5('John', 1990, 'Developer');
+console.log(John5);
 
+John5['calculateAge']();
 
+//ES6
+class Person6 {
+	constructor (name6, yearofbirth6, job6)
+	{
+		this.name6 = name6;
+		this.yearofbirth6 = yearofbirth6;
+		this.job6 = job6;
+	}
+	calculateAge6(){
+		var person6age = new Date().getFullYear() - this.yearofbirth6;
+		console.log(person6age);
+	}
+	static greeting() {
+		console.log('Hey there');
+	}
+}
 
-
+const John6 = new Person6('Lil John', '1980', 'Actor');
+John6.calculateAge6();
+Person6.greeting();
 
 
 
