@@ -141,6 +141,61 @@ console.log(ages[full.indexOf(true)]);
 console.log(ages.findIndex(cur => cur >= 18));
 console.log(ages.find(cur => cur >= 18));
 
+//Spread Operator 
+
+function addFourAges (a,b,c,d){
+	return a + b + c + d;
+}
+var someone = addFourAges(18, 30, 12, 21);
+console.log(someone);
+
+//ES5
+var testAges = [18, 30, 12, 21];
+var sum2 = addFourAges.apply(null, testAges);
+console.log(sum2);
+
+//ES6
+//spread operator ...
+const sum3 = addFourAges(...testAges);
+console.log(sum3);
+
+const familySmith = ['John', 'Jane', 'Mark'];
+const familySanchez = ['Alexis', 'Emelia', 'Ernesto'];
+const combinedFamily = [...familySmith, 'Craig Ya Boi', ...familySanchez];
+console.log(combinedFamily);
+
+const h = document.querySelector('h1');
+const allBoxes = document.querySelectorAll('.box');
+const allPage = [h, ...allBoxes];
+
+const changeUp = Array.from(allPage).forEach(cur => cur.style.color = 'purple');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
