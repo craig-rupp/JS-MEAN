@@ -4,21 +4,26 @@ console.log('Hello third practice');
 //Rest Parameters
 
 //ES5
-function isFullAge5() {
-	//console.log(arguments);
-	var argsArray = Array.prototype.slice.call(arguments);
+function isFullAge5(limit) {
+	console.log(arguments);
+	//start copying at 1, exlcuding limit argument
+	var argsArray = Array.prototype.slice.call(arguments, 1);
+	console.log(argsArray);
 	argsArray.forEach(function(cur){
-		console.log((2016 - cur) >= 18);
+		console.log((2016 - cur) >= limit);
 	})
 }
-//isFullAge5(1990, 1999, 1960);
+isFullAge5(11, 1990, 1999, 1960);
 //console.log('second function call');
 //isFullAge5(1990, 1999, 1960, 2001, 1987);
 
 //ES6
-function isFullAge6(...years){
+//rest allows multitude of parameters
+function isFullAge6(limit, ...years){
 	//console.log(years);
-	years.forEach(cur => console.log((2016 - cur) >= 18));
+	years.forEach(cur => console.log((2016 - cur) >= limit));
 }
 
-isFullAge6(1990, 1999, 1960, 2016, 1998);
+isFullAge6(25, 1990, 1999, 1960, 2016, 1998);
+
+
