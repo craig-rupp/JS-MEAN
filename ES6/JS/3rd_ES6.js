@@ -197,6 +197,7 @@ console.log(TiberiusAthlete6);
 TiberiusAthlete6.wonMedals();
 TiberiusAthlete6.calculateAge6();
 console.log(TiberiusAthlete6);
+console.log('hello');
 
 
 
