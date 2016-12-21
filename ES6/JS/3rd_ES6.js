@@ -97,6 +97,45 @@ for(let [key, value] of question.entries()){
 //CLASSES
 //ES 5
 
+// var Person5 = function(name5, yearofbirth5, job5)
+// {
+// 	this.name5 = name5;
+// 	this.yearofbirth5 = yearofbirth5;
+// 	this.job5 = job5;
+// }
+// Person5.prototype.calculateAge = function ()
+// {
+// 	var person5age = new Date().getFullYear() - this.yearofbirth5;
+// 	console.log(person5age);
+// }
+// var John5 = new Person5('John', 1990, 'Developer');
+// console.log(John5);
+
+// John5['calculateAge']();
+
+//ES6
+// class Person6 {
+// 	constructor (name6, yearofbirth6, job6)
+// 	{
+// 		this.name6 = name6;
+// 		this.yearofbirth6 = yearofbirth6;
+// 		this.job6 = job6;
+// 	}
+// 	calculateAge6(){
+// 		var person6age = new Date().getFullYear() - this.yearofbirth6;
+// 		console.log(person6age);
+// 	}
+// 	static greeting() {
+// 		console.log('Hey there');
+// 	}
+// }
+
+// const John6 = new Person6('Lil John', '1980', 'Actor');
+// John6.calculateAge6();
+// Person6.greeting();
+
+//Classes & SubClasses
+//ES5
 var Person5 = function(name5, yearofbirth5, job5)
 {
 	this.name5 = name5;
@@ -108,10 +147,24 @@ Person5.prototype.calculateAge = function ()
 	var person5age = new Date().getFullYear() - this.yearofbirth5;
 	console.log(person5age);
 }
-var John5 = new Person5('John', 1990, 'Developer');
-console.log(John5);
+var Athlete5 = function(name5, yearofbirth5, job5, olympicgames5, medals)
+{
+	Person5.call(this, name5, yearofbirth5, job5);
+	this.olympicgames5 = olympicgames5;
+	this.medals = medals;
+}
 
-John5['calculateAge']();
+Athlete5.prototype = Object.create(Person5.prototype);
+var CraigAthlete5 = new Athlete5('Craig', 1990, 'sprinter', 3, 8);
+console.log(CraigAthlete5);
+
+Athlete5.prototype.wonMedals = 
+function (){
+	this.medals++;
+	console.log(this.medals);
+}
+CraigAthlete5.calculateAge();
+CraigAthlete5.wonMedals()
 
 //ES6
 class Person6 {
@@ -125,14 +178,43 @@ class Person6 {
 		var person6age = new Date().getFullYear() - this.yearofbirth6;
 		console.log(person6age);
 	}
-	static greeting() {
-		console.log('Hey there');
+}
+class Athlete6 extends Person6 {
+	constructor (name6, yearofbirth6, job6, olympicgames6, medals6)
+	{
+		super(name6, yearofbirth6, job6);
+		this.olympicgames6 = olympicgames6;
+		this.medals6 = medals6;
+	}
+	wonMedals(){
+		this.medals6++;
+		console.log(this.medals6);
 	}
 }
 
-const John6 = new Person6('Lil John', '1980', 'Actor');
-John6.calculateAge6();
-Person6.greeting();
+const TiberiusAthlete6 = new Athlete6('Tiberius', 127, 'decathalete', 4, 14);
+console.log(TiberiusAthlete6);
+TiberiusAthlete6.wonMedals();
+TiberiusAthlete6.calculateAge6();
+console.log(TiberiusAthlete6);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
