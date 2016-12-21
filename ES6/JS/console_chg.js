@@ -85,6 +85,7 @@ function reportStreets(s){
 
 reportPark(allParks);
 reportStreets(allStreets);
+console.log('Hello checking Alias');
 
 
 
