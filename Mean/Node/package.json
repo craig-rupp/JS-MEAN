@@ -1,0 +1,29 @@
+ {
+  "name": "mean-app",
+  "version": "1.0.0",
+  "description": "MEAN stack app",
+  "main": "app.js",
+  "scripts": {
+    "start" : "node ../Node/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craig-rupp/JS-MEAN.git"
+  },
+  "keywords": [
+    "mean"
+  ],
+  "author": "Craig Rupp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/craig-rupp/JS-MEAN/issues"
+  },
+  "homepage": "https://github.com/craig-rupp/JS-MEAN#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
