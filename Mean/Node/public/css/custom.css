@@ -1,0 +1,19 @@
+/* Stick Footer Styles */
+
+html {
+	position: absolute;
+}
+body {
+	margin-bottom: 90px;
+}
+.padded {
+	padding-top: 30px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/*set fixed height of footer here */
+	height: 90px;
+	padding-top: 15px;
+}
