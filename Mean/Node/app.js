@@ -4,6 +4,14 @@ var path = require('path');
 
 app.set('port', 3000);
 
+//middleware above static function
+//only log css files with '/css' before async function, remove css to log all 
+app.use(function(request, response, next){
+	console.log(request.method, request.url);
+	next();
+});
+
+//set index.html to route homepage 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.get('/', function(request, response){
