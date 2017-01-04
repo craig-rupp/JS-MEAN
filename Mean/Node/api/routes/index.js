@@ -6,6 +6,10 @@ var ctrlHotels = require('../controllers/hotels.controllers.js');
 router
 .route('/hotels')
 .get(ctrlHotels.hotelsGetAll);
+
+router
+.route('/hotels/:hotelId')
+.get(ctrlHotels.hotelsGetOne);
 // .post(function(request, response){
 // 	console.log("POST the JSON");
 // 	response
