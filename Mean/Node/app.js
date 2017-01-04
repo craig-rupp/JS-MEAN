@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+//middleware instal to parse for post as express doesn't do it natively, installed through npm in terminal (posting forms)
+var bodyParser = require('body-parser');
 
 var routes = require('./api/routes'); 
 
@@ -15,6 +17,9 @@ app.use(function(request, response, next){
 
 //set index.html to route homepage 
 app.use(express.static(path.join(__dirname, 'public')));
+
+//urlencoded takes array/string (types) and will allow the npm extension to post
+app.use(bodyParser.urlencoded({extended : false}));
 
 app.use('/api', routes);
 

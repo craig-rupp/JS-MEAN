@@ -1,10 +1,10 @@
- {
+{
   "name": "mean-app",
   "version": "1.0.0",
   "description": "MEAN stack app",
   "main": "app.js",
   "scripts": {
-    "start" : "node ../Node/app.js",
+    "start": "node ../Node/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/craig-rupp/JS-MEAN#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0"
   },
   "devDependencies": {
