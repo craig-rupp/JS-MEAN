@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+var routes = require('./routes'); 
+
 app.set('port', 3000);
 
 //middleware above static function
@@ -13,6 +15,8 @@ app.use(function(request, response, next){
 
 //set index.html to route homepage 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api', routes);
 
 // app.get('/', function(request, response){
 // 	console.log("GET the homepage");
